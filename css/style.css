@@ -1,0 +1,477 @@
+/* --- Import Outfit Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+/* --- Global Resets & Defaults --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif; /* UPDATED */
+    color: #343a40; /* Default dark text color */
+    line-height: 1.6;
+    /* Default background - will be overridden based on page context */
+    background-color: #f8f9fa;
+}
+
+/* --- Login Page Specific Body Styles --- */
+body:has(#login-area.visible) {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ebf2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+/* --- Hub Page Specific Body Styles --- */
+/* Targets body when the main page content wrapper exists */
+body:has(#page-content) {
+    display: block;
+    background: #f8f9fa;
+    padding: 0;
+    height: auto;
+    min-height: 100vh;
+}
+
+
+/* --- Utility Classes --- */
+.hidden { display: none !important; }
+.visible { display: block; }
+
+
+/* --- Login Container Styles --- */
+.login-container {
+    background-color: #ffffff;
+    padding: 30px 40px 40px 40px;
+    border-radius: 8px;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    display: block;
+}
+#login-area.hidden { display: none !important; }
+
+/* --- Logo Styles --- */
+.logo-container { margin-bottom: 30px; }
+.logo-container img { display: block; max-width: 180px; height: auto; margin: 0 auto; }
+
+.login-container h2 { color: #1c1c4e; margin-bottom: 25px; font-weight: 600; font-size: 1.4rem; }
+
+/* --- Form Styles --- */
+.form-group { margin-bottom: 20px; text-align: left; }
+.form-group label { display: block; margin-bottom: 8px; color: #343a40; font-weight: 500; font-size: 0.9rem; }
+.form-group input { width: 100%; padding: 12px 15px; border: 1px solid #dee2e6; border-radius: 5px; font-family: 'Outfit', sans-serif; /* UPDATED */ font-size: 1rem; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.form-group input:focus { border-color: #f07c00; outline: none; box-shadow: 0 0 0 3px rgba(240, 124, 0, 0.2); }
+
+/* --- Button Styles --- */
+button { background-color: #f07c00; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; width: 100%; font-family: 'Outfit', sans-serif; /* UPDATED */ font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; transition: background-color 0.2s ease, transform 0.1s ease; margin-top: 10px; }
+button:hover { background-color: #d96f00; }
+button:active { transform: scale(0.98); }
+
+/* --- Login Message Area Styles --- */
+#message { margin-top: 20px; font-weight: 500; font-size: 0.95rem; min-height: 1.5em; }
+#message.success { color: #28a745; }
+#message.error { color: #dc3545; }
+
+
+/* =============================================== */
+/* --- Banner Styles --- */
+/* =============================================== */
+
+.page-banner {
+    background-color: #1c1c4e; /* Solid blue background */
+    color: #ffffff; /* White text */
+    padding: 25px 20px 15px 20px; /* Adjusted padding bottom */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    /* min-height removed, let content dictate height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 15px; /* Add space below text content */
+}
+
+.page-banner h1 {
+    font-family: 'Outfit', sans-serif; /* UPDATED */
+    font-weight: 600;
+    font-size: 2.2rem;
+    line-height: 1.3;
+    margin: 0 0 5px 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtitle Style */
+.banner-subtitle {
+    font-family: 'Outfit', sans-serif; /* UPDATED */
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* --- NEW Navigation Styles --- */
+.page-navigation {
+    position: relative;
+    z-index: 1; /* Ensure nav is above background elements */
+    display: flex;
+    gap: 10px; /* Space between links */
+}
+
+.page-navigation a {
+    font-family: 'Outfit', sans-serif; /* UPDATED */
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+    text-decoration: none;
+    padding: 8px 15px; /* Padding for links */
+    border-radius: 4px; /* Slightly rounded corners */
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-bottom: 2px solid transparent; /* Placeholder for active state */
+}
+
+.page-navigation a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+    color: #ffffff; /* Full white on hover */
+}
+
+.page-navigation a.active {
+    color: #ffffff; /* Full white */
+    font-weight: 600;
+    border-bottom: 2px solid #f07c00; /* Orange underline for active link */
+    /* background-color: rgba(255, 255, 255, 0.05); */ /* Optional subtle active background */
+}
+
+
+/* Optional: Subtle background circles */
+.banner-bg-element { position: absolute; border-radius: 50%; background-color: rgba(255, 255, 255, 0.05); z-index: 0; }
+.banner-circle-1 { width: 200px; height: 200px; top: -50px; left: -50px; }
+.banner-circle-2 { width: 300px; height: 300px; bottom: -100px; right: -80px; opacity: 0.8; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .page-banner h1 { font-size: 1.8rem; }
+    .banner-subtitle { font-size: 0.9rem; }
+    .page-banner { padding: 20px 15px 10px 15px; }
+    .page-navigation a { font-size: 0.85rem; padding: 6px 10px; }
+}
+@media (max-width: 480px) {
+    .page-banner h1 { font-size: 1.5rem; }
+    .banner-subtitle { font-size: 0.85rem; }
+    .page-navigation { gap: 5px; }
+    .page-navigation a { font-size: 0.8rem; padding: 5px 8px; }
+}
+
+/* =============================================== */
+/* --- Main Page Content Styles (Original Layout Restored) --- */
+/* =============================================== */
+
+/* Wrapper for content below banner */
+#page-content {
+    padding: 1px 30px 30px 30px; /* Add padding, use 1px top to prevent margin collapse */
+    max-width: 1600px; /* Optional: Overall width limit */
+    margin: 0 auto; /* Center content */
+}
+
+/* --- Styles for Content Sections (Restored Original Margins/Widths) --- */
+.content-section {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    margin: 40px auto; /* Original vertical spacing & horizontal centering */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    max-width: 1100px; /* Original max-width */
+    border: 1px solid #e9ecef;
+    width: auto; /* Allow max-width and margin auto to work */
+}
+
+.content-section h2 { /* Added style for placeholder page h2 */
+     color: #1c1c4e;
+     margin-bottom: 20px;
+     font-weight: 600;
+}
+
+.content-section h3 { color: #1c1c4e; font-weight: 600; font-size: 1.3rem; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #f07c00; display: inline-block; }
+.content-section p, .content-section ul { margin-bottom: 15px; color: #343a40; line-height: 1.7; }
+.content-section ul { list-style-position: outside; padding-left: 25px; }
+.content-section li { margin-bottom: 8px; }
+.content-section a { color: #f07c00; text-decoration: none; font-weight: 500; transition: color 0.2s ease; }
+.content-section a:hover { color: #d96f00; text-decoration: underline; }
+
+
+/* --- Styles for Embedded Hub Content (Restored Original) --- */
+#hub-content {
+    width: 1280px;
+    height: 720px;
+    max-width: 100%; /* Keep this to prevent overflow on smaller viewports */
+    margin: 40px auto;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    position: relative;
+    background-color: #f0f0f0; /* Loading background */
+}
+
+
+/* --- Hub Loading/Error Message --- */
+#hub-message { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #6c757d; font-size: 1.1rem; font-weight: 500; padding: 20px; z-index: 1; }
+#hub-message.error { color: #dc3545; font-weight: 500; }
+
+/* --- Embedded Iframe Style --- */
+#hub-content iframe { display: block; width: 100%; height: 100%; border: none; position: relative; z-index: 0; }
+
+
+/* --- Styles for Embedded Dashboard Container --- */
+#dashboard-embed-container {
+    width: 1280px;
+    height: 720px;
+    max-width: 100%;
+    margin: 5px auto 30px; /* Reduced top margin */ /* <--- UPDATED LINE */
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- Styles for the Loading/Error Message inside the container --- */
+#embed-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #6c757d;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 20px;
+    z-index: 1;
+    text-align: center;
+}
+
+#embed-message.error {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+/* Ensure embedded iframe fills the container */
+#dashboard-embed-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none; /* This ensures the iframe itself has no border */
+    position: relative;
+    z-index: 0;
+}
+
+/* --- Minor style adjustment for consistency --- */
+.error {
+    color: #dc3545;
+}
+
+/* =============================================== */
+/* --- Flag Selector Styles (Corrected) ---        */
+/* =============================================== */
+.flag-selector-container {
+    /* Inherits content-section styles */
+    /* text-align: center; -- Removing this, centering is handled by flexbox below */
+}
+
+.flag-selector-container h3 {
+    margin-bottom: 25px;
+    text-align: left; /* Align heading left */
+    display: block;
+    border-bottom: none;
+}
+
+/* Styles for the container holding the buttons */
+.flag-options {
+    display: flex;          /* Arrange buttons in a row */
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 25px;              /* Space between buttons */
+    flex-wrap: wrap;        /* Allow wrapping on small screens */
+}
+
+/* Styles for each individual flag button */
+.flag-button {
+    display: flex;          /* Arrange image and text inside the button */
+    align-items: center;    /* Vertically center image and text */
+    padding: 10px 15px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+    min-width: 180px; /* Adjusted minimum width for side-by-side content */
+    text-transform: none;
+    font-weight: 500;
+    letter-spacing: normal;
+    color: #343a40;
+    margin-top: 0; /* Overrides default button margin */
+    width: auto; /* Allow min-width to take effect but don't force width */
+    font-family: 'Outfit', sans-serif; /* UPDATED */
+    /* Removed flex-direction: column; */
+}
+
+.flag-button:hover {
+    border-color: #f07c00;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+}
+
+.flag-button:active {
+    transform: scale(0.97);
+    background-color: #e9ecef;
+}
+
+.flag-button.selected {
+  border-color: #f07c00;
+  box-shadow: 0 0 0 3px rgba(240, 124, 0, 0.3);
+  background-color: #fff;
+}
+
+/* Styles for the flag image itself */
+.flag-image {
+    width: 60px; /* Slightly smaller width might look better side-by-side */
+    height: auto;
+    margin-right: 10px; /* Space between flag and text */
+    display: block; /* Changed from inline-block if it was */
+    border: 1px solid #eee;
+    /* Removed margin-bottom */
+    flex-shrink: 0; /* Prevent image from shrinking if button width is tight */
+}
+
+.flag-button span {
+  font-size: 0.9rem;
+  text-align: left; /* Ensure text aligns left within its space */
+  flex-grow: 1; /* Allow text to take available space */
+}
+
+/* --- Styles for the Second (Themed) Dashboard Container --- */
+#dashboard-embed-container-themed {
+    width: 1280px;       /* Set specific width */
+    height: 720px;      /* Set specific height */
+    max-width: 100%;    /* Allows shrinking on smaller screens */
+    margin: 30px auto;  /* Add top/bottom margin and center horizontally */
+    overflow: hidden;   /* Hides scrollbars on the container */
+    position: relative; /* Needed for positioning the message element */
+    border: 1px solid #dee2e6; /* Optional: Add a border like the hub container */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07); /* Optional: Add shadow */
+    background-color: #f0f0f0; /* Optional: Loading background color */
+}
+
+/* Ensure its message element is styled (similar to the other message elements) */
+#embed-message-themed {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #6c757d;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 20px;
+    z-index: 1;
+    text-align: center;
+}
+
+#embed-message-themed.error {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+/* Ensure its iframe fills the container */
+#dashboard-embed-container-themed iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: relative;
+    z-index: 0;
+}
+
+
+/* --- Styles for the Present Example Dashboard Container (REVISED FOR BETTER SCALING) --- */
+#present-dashboard-container {
+    width: 1280px;
+    height: 720px;
+    max-width: 100%;
+    margin: 5px auto 30px; /* Reduced top margin */ /* <--- UPDATED LINE */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Message element styling (ensure it's visible if container is empty or loading) */
+#present-embed-message {
+    /* position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); */ /* Centered absolutely */
+    /* The flex properties on the parent container will center this if it's the only child */
+    color: #6c757d;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 20px;
+    text-align: center;
+    z-index: 1; /* Ensure message is above background/iframe initially */
+}
+
+#present-embed-message.error {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+/* Ensure the iframe (if Pyramid renders one) fills the container */
+/* This is crucial for the embedded content to use the allocated space */
+#present-dashboard-container iframe {
+    display: block; /* Remove any extra space below the iframe */
+    width: 100%;    /* Fill the width of #present-dashboard-container */
+    height: 100%;   /* Fill the height of #present-dashboard-container */
+    border: none;   /* Remove iframe border */
+    position: relative; /* Or absolute if needed, but relative should work if it's the main content */
+    z-index: 0;     /* Ensure it's behind the message if message is absolute */
+}
+
+
+
+/* --- Styles for Dashboard Page Control Buttons --- */
+.dashboard-page-controls {
+    max-width: 1280px; /* Match the max-width of the dashboard container */
+    margin: 0 auto 15px auto; /* Center the controls and add margin below, above dashboard */
+    padding: 0 10px; /* Add some padding if the container shrinks */
+    text-align: center; /* Center the buttons within the div */
+}
+
+.dashboard-page-button {
+    background-color: #f07c00; /* Pyramid orange */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin: 0 5px; /* Space between buttons */
+    min-width: 100px; /* Ensure buttons have some width */
+    width: auto; /* Override general button width: 100% */
+}
+
+.dashboard-page-button:hover {
+    background-color: #d96f00; /* Darker orange */
+}
+
+.dashboard-page-button:active {
+    transform: scale(0.98);
+}
+
+/* Optional: Style for an active/selected page button */
+.dashboard-page-button.active {
+    background-color: #1c1c4e; /* Dark blue to indicate active */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}

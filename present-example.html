@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid - Present Example</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <header class="page-banner">
+        <div class="banner-content">
+            <h1>Analytics is useless<br>unless its intelligent</h1>
+            <p class="banner-subtitle">Embedding a Present Dashboard</p>
+        </div>
+        <nav class="page-navigation">
+            <a href="hub.html">Hub</a>
+            <a href="app-styles.html">App Styles</a>
+            <a href="present-example.html" class="active">Present Example</a>
+            </nav>
+        <div class="banner-bg-element banner-circle-1"></div>
+        <div class="banner-bg-element banner-circle-2"></div>
+    </header>
+
+    <main id="page-content">
+        <div class="content-section">
+            <h2>Embedded "Present" Dashboard</h2>
+            <p>This page demonstrates embedding a dashboard from Pyramid's "Present" module. Replace the placeholder <code>contentId</code> in <code>js/present-example.js</code> with your actual dashboard ID. Use the buttons below to interact with different pages of the presentation if configured.</p>
+        </div>
+
+        <div class="dashboard-page-controls">
+            <button id="presentPage1" class="dashboard-page-button">Page 1</button>
+            <button id="presentPage2" class="dashboard-page-button">Page 2</button>
+            <button id="presentPage3" class="dashboard-page-button">Page 3</button>
+        </div>
+
+        <div id="present-dashboard-container">
+             <p id="present-embed-message" style="text-align: center; padding: 20px;">Loading Present Dashboard...</p>
+        </div>
+
+        <div class="content-section">
+            <h3>About "Present"</h3>
+            <p>Pyramid's "Present" module allows users to design and build dynamic, interactive storyboards and dashboards, often combining content from multiple data sources and visualizations into a cohesive presentation layer.</p>
+        </div>
+    </main>
+
+    <script src="https://learn01.pyramidanalytics.com/no-shell/pyramid-embed-js.min.js"></script>
+    <script src="js/present-example.js"></script>
+</body>
+</html>

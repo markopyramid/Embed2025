@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid - Embedded Styling</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid - Embedded Styling</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <header class="page-banner">
+        <div class="banner-content">
+            <h1>Analytics is useless<br>unless its intelligent</h1>
+            <p class="banner-subtitle">Applying Application Styles</p>
+        </div>
+        <nav class="page-navigation">
+            <a href="hub.html">Hub</a>
+            <a href="app-styles.html" class="active">App Styles</a>
+            <a href="present-example.html">Present Example</a>           
+        </nav>
+        <div class="banner-bg-element banner-circle-1"></div>
+        <div class="banner-bg-element banner-circle-2"></div>
+    </header>
+
+    <main id="page-content">
+        <div class="content-section">
+            <h3>Embedded UI Styling</h3>
+            <p>New options to change the styling themes of existing content while embedding. New options also include the ability to change the “global” styles of application UI elements as well.</p>
+        </div>
+
+        <div class="content-section flag-selector-container">
+            <h3>Select a Country:</h3>
+            <div class="flag-options">
+                <button class="flag-button" id="flag-au" data-country="australia">
+                    <img src="https://flagcdn.com/au.svg" alt="Flag of Australia" class="flag-image">
+                    <span>Australia</span>
+                </button>
+                <button class="flag-button" id="flag-uk" data-country="uk">
+                    <img src="https://flagcdn.com/gb.svg" alt="Flag of the United Kingdom" class="flag-image">
+                    <span>United Kingdom</span>
+                </button>
+            </div>
+        </div>
+        <div id="dashboard-embed-container">
+             <p id="embed-message" style="text-align: center; padding: 20px;">Loading Dashboard...</p>
+        </div>
+
+        <div class="content-section">
+            <h3>Theme Example</h3>
+            <p>Ability to apply a Content Theme to an existing item at the time of embedding. ContentTheme is a string of the ID for a design theme that should be used to stylize the content itself. This allows for content to be reused and styled on demand.</p>
+       </div>
+       <div id="dashboard-embed-container-themed">
+            <p id="embed-message-themed" style="text-align: center; padding: 20px;">Loading Themed Dashboard...</p>
+        </div>
+    </main>
+
+    <script src="https://learn01.pyramidanalytics.com/no-shell/pyramid-embed-js.min.js"></script>
+    <script src="js/app-styles.js"></script>
+</body>
+</html>

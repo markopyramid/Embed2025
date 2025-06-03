@@ -178,8 +178,8 @@ button:active { transform: scale(0.98); }
 
 /* Wrapper for content below banner */
 #page-content {
-    padding: 1px 30px 30px 30px; /* Add padding, use 1px top to prevent margin collapse */
-    max-width: 1600px; /* Optional: Overall width limit */
+    padding: 1px 10px 10px 10px; /* UPDATED: top right bottom left (left is now 15px) */
+    max-width: 1800px;
     margin: 0 auto; /* Center content */
 }
 
@@ -474,4 +474,281 @@ button:active { transform: scale(0.98); }
 .dashboard-page-button.active {
     background-color: #1c1c4e; /* Dark blue to indicate active */
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* --- discover-example.html Specific Styles --- */
+
+.discover-grid-container {
+    display: grid;
+    gap: 20px; 
+    padding: 20px 0; 
+    max-width: 1600px; /* Allows for 3 x 500px items + gaps */
+    margin: 20px auto; 
+    justify-items: center; /* Centers items within their grid tracks */
+    grid-template-columns: 1fr; /* Default: 1 column for smallest screens */
+}
+
+/* For screens wide enough for two 500px items + gap */
+@media (min-width: 1040px) { /* (500*2) + 20 (gap) + some breathing room */
+    .discover-grid-container {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+/* For screens wide enough for three 500px items + gaps */
+@media (min-width: 1560px) { /* (500*3) + (20*2) (gaps) + some breathing room */
+    .discover-grid-container {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+
+.discover-item {
+    background-color: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 6px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+    height: 350px; /* Fixed height, adjust if needed */
+    width: 500px; /* Fixed width */
+    max-width: 100%; /* Ensures it shrinks if grid track is narrower */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    overflow: hidden; 
+    position: relative; 
+}
+
+.discover-item-placeholder {
+    font-family: 'Outfit', sans-serif;
+    color: #6c757d; 
+    font-size: 1rem;
+    padding: 20px;
+    text-align: center;
+}
+
+.discover-item-placeholder.error {
+    color: #dc3545; 
+}
+
+.discover-item iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute; 
+    top: 0;
+    left: 0;
+}
+
+/* --- Styles for Hierarchical Filter Tree --- */
+.filter-control-container { /* Replaces filter-dropdown-container styling if needed */
+    text-align: left; 
+    max-width: 1100px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.filter-control-container label {
+    display: block;
+    margin-bottom: 10px; /* Increased margin */
+    color: #343a40;
+    font-weight: 600; /* Bolder label */
+    font-size: 1rem;   /* Slightly larger label */
+}
+
+.filter-tree {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 10px;
+    max-height: 300px; /* Example max height, make it scrollable if content exceeds */
+    overflow-y: auto;
+    font-size: 0.9rem;
+}
+
+.filter-tree ul {
+    list-style-type: none;
+    padding-left: 0; /* Reset browser default */
+    margin: 0;
+}
+
+.filter-tree ul ul {
+    padding-left: 20px; /* Indentation for nested levels */
+}
+
+.filter-tree li {
+    margin: 2px 0;
+}
+
+.filter-tree .tree-node {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: default; /* Default cursor, will be pointer for selectable items */
+}
+
+.filter-tree .tree-node-toggle {
+    display: inline-block;
+    width: 20px; /* Space for icon */
+    text-align: center;
+    margin-right: 5px;
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.filter-tree .tree-node-toggle .fa-plus-square,
+.filter-tree .tree-node-toggle .fa-minus-square {
+    transition: transform 0.2s ease-in-out;
+}
+
+.filter-tree .tree-node-label {
+    flex-grow: 1;
+}
+
+.filter-tree .tree-node-label.selectable {
+    cursor: pointer;
+    color: #007bff; /* Make selectable items look like links */
+}
+
+.filter-tree .tree-node-label.selectable:hover {
+    text-decoration: underline;
+    background-color: #f0f8ff; /* Light blue hover */
+}
+
+.filter-tree .tree-node-label.selected {
+    font-weight: bold;
+    color: #f07c00; /* Pyramid orange for selected */
+    background-color: #fff3e0; /* Light orange background for selected */
+}
+
+.filter-tree .child-nodes { /* UL for children */
+    display: none; /* Initially hidden */
+}
+
+.filter-tree .child-nodes.expanded {
+    display: block;
+}
+
+/* --- Add these new styles to your style.css --- */
+
+/* Layout for Discover Page (Filter Left, Content Right) */
+.discover-page-layout-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow sidebar to stack on top on small screens */
+    gap: 30px;       /* Increased space between sidebar and main content */
+    margin-top: 20px;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.discover-filter-sidebar {
+    flex: 0 0 200px; /* Do not grow, do not shrink, basis of 280px */
+    max-width: 100%; /* For stacking responsiveness */
+    background-color: #ffffff;
+    padding: 5px 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e9ecef;
+    /* height: fit-content; Let content define height */
+    /* Ensure margin-left: 150px is NOT here */
+}
+
+.discover-filter-sidebar h3 {
+    color: #1c1c4e;
+    font-weight: 600;
+    font-size: 1.1rem; /* Adjusted size */
+    margin-top: 0; /* Remove top margin if it's the first element */
+    margin-bottom: 15px;
+    padding-bottom: 8px; /* Increased padding */
+    border-bottom: 2px solid #f07c00;
+    display: inline-block;
+}
+
+.discover-main-content {
+    flex: 1 1 600px; /* Grow to take remaining space, basis of 600px */
+    min-width: 0;    /* Important for flex item shrinking with complex content like grids */
+}
+
+/* Existing .filter-tree styles will apply. Adjust max-height if needed for sidebar context */
+.filter-tree {
+    /* background-color: #fff; (already styled, but ensure no conflict) */
+    /* border: 1px solid #dee2e6; (already styled) */
+    /* border-radius: 5px; (already styled) */
+    padding: 5px; /* Adjusted padding if needed */
+    /* max-height: 400px; /* Adjust if you want a scrollable tree within the sidebar */
+    /* overflow-y: auto; */
+    font-size: 0.9rem;
+}
+/* Ensure filter-tree ul/li styles don't have conflicting margins/paddings from .content-section */
+.discover-filter-sidebar .filter-tree ul {
+    padding-left: 0; /* Override any deeper specificity if needed */
+}
+
+
+/* Adjust .discover-grid-container if necessary (it's now inside .discover-main-content) */
+.discover-grid-container {
+    display: grid;
+    gap: 20px; 
+    /* padding: 20px 0; /* Padding might now be on .discover-main-content or not needed */
+    /* max-width: 1600px; /* This will be constrained by .discover-main-content */
+    /* margin: 20px auto; /* Margin might now be on .discover-main-content or not needed */
+    justify-items: center;
+    grid-template-columns: 1fr; /* Default for smallest screens */
+}
+
+/* Responsive adjustments for the main layout and grid */
+@media (max-width: 991px) { /* Breakpoint for stacking sidebar and content */
+    .discover-page-layout-container {
+        flex-direction: column;
+        gap: 20px; /* Adjust gap for stacked layout */
+    }
+    .discover-filter-sidebar {
+        flex-basis: auto; /* Allow it to take full width when stacked */
+        width: 100%;
+        margin-bottom: 0; /* Remove bottom margin if stacked, gap handles spacing */
+    }
+    .discover-main-content {
+        flex-basis: auto;
+        width: 100%;
+    }
+    /* Adjust grid for stacked view if needed, e.g., fewer columns */
+    .discover-grid-container {
+        /* Might keep 1fr or adjust for 2 columns if space allows even on tablet */
+        grid-template-columns: repeat(auto-fit, minmax(calc(50% - 10px), 1fr)); /* Example for 2 columns */
+        /* Fallback to 1 column if above is too complex or not desired */
+        /* grid-template-columns: 1fr; */
+    }
+     @media (max-width: 539px) { /* Single column for small mobile */
+        .discover-grid-container {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+/* Ensure grid for embedded items still aims for 3 columns on wider screens */
+@media (min-width: 1040px) { 
+    .discover-main-content .discover-grid-container { /* Target grid inside main content */
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    }
+}
+@media (min-width: 1560px) { 
+    .discover-main-content .discover-grid-container {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+/* Remove .content-section styling from the old filter container if it's no longer used */
+.content-section.filter-control-container {
+    /* This class combination might no longer exist or need different styling */
+    /* Consider removing or repurposing if the new sidebar handles it */
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+}
+
+/* Optional: Style for the introductory text section */
+.content-section.page-intro {
+    margin-bottom: 20px; /* Space it out from the layout container below */
 }

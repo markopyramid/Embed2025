@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid - Discover Example (Sidebar Filter)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <header class="page-banner">
+        <div class="banner-content">
+            <h1>Analytics is useless<br>unless its intelligent</h1>
+            <p class="banner-subtitle">Embedding Multiple Content Items (Sidebar Filter)</p>
+        </div>
+        <nav class="page-navigation">
+            <a href="hub.html">Hub</a>
+            <a href="app-styles.html">App Styles</a>
+            <a href="present-example.html">Present Example</a>
+            <a href="discover-example.html" class="active">Discover Example</a>
+        </nav>
+        <div class="banner-bg-element banner-circle-1"></div>
+        <div class="banner-bg-element banner-circle-2"></div>
+    </header>
+
+    <main id="page-content">
+        <div class="content-section page-intro"> <h2>Embedded "Discover" Items with Sidebar Filter</h2>
+            <p>Use the hierarchical tree filter on the left to filter the content items displayed on the right. "2023" is the default.</p>
+        </div>
+
+        <div class="discover-page-layout-container">
+            <aside class="discover-filter-sidebar">
+                <h3>Filter by Period</h3>
+                <div id="hierarchical-filter-tree" class="filter-tree">
+                    </div>
+            </aside>
+
+            <section class="discover-main-content">
+                <div class="discover-grid-container">
+                    <div class="discover-item" id="discover-item-1">
+                        <p class="discover-item-placeholder">Loading Content Item 1...</p>
+                    </div>
+                    <div class="discover-item" id="discover-item-2">
+                        <p class="discover-item-placeholder">Loading Content Item 2...</p>
+                    </div>
+                    <div class="discover-item" id="discover-item-3">
+                        <p class="discover-item-placeholder">Loading Content Item 3...</p>
+                    </div>
+                    <div class="discover-item" id="discover-item-4">
+                        <p class="discover-item-placeholder">Loading Content Item 4...</p>
+                    </div>
+                    <div class="discover-item" id="discover-item-5">
+                        <p class="discover-item-placeholder">Loading Content Item 5...</p>
+                    </div>
+                    <div class="discover-item" id="discover-item-6">
+                        <p class="discover-item-placeholder">Loading Content Item 6...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://learn01.pyramidanalytics.com/no-shell/pyramid-embed-js.min.js"></script>
+    <script src="js/discover-example.js"></script>
+</body>
+</html>
